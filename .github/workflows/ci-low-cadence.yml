@@ -1,22 +1,23 @@
 name: Continuous Integration (Low Cadence)
 
-on:
-  workflow_call:
-  workflow_dispatch:
-  repository_dispatch:
-    types: run-slow-tests
-  schedule:
-    - cron: '0 0,12 * * *'
-  push:
-    branches:
-      - master
-      - 'release/**'
-  pull_request:
-    types: [opened, synchronize]
-    branches:
-      - master
-      - 'release/**'
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#   workflow_dispatch:
+#   repository_dispatch:
+#     types: run-slow-tests
+#   schedule:
+#     - cron: '0 0,12 * * *'
+#   push:
+#     branches:
+#       - master
+#       - 'release/**'
+#   pull_request:
+#     types: [opened, synchronize]
+#     branches:
+#       - master
+#       - 'release/**'
+# 
 concurrency:
   group: ci-low-cadence-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name != 'schedule' }}

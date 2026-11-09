@@ -1,11 +1,12 @@
 name: Release
 
-on:
-  workflow_dispatch:
-  push:
-    tags:
-      - "*.*.*"
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#   push:
+#     tags:
+#       - "*.*.*"
+# 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false

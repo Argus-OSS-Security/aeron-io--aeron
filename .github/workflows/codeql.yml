@@ -1,20 +1,21 @@
 name: "CodeQL"
 
-on:
-  workflow_call:
-  workflow_dispatch:
-  repository_dispatch:
-    types: run-commit-tests
-  push:
-    branches:
-      - master
-      - release/**
-  pull_request:
-    types: [opened, synchronize]
-    branches:
-      - master
-      - release/**
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#   workflow_dispatch:
+#   repository_dispatch:
+#     types: run-commit-tests
+#   push:
+#     branches:
+#       - master
+#       - release/**
+#   pull_request:
+#     types: [opened, synchronize]
+#     branches:
+#       - master
+#       - release/**
+# 
 concurrency:
   group: codeql-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
